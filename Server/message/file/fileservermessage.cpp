@@ -29,3 +29,10 @@ FileServerMessage::FileServerMessage(QString fileName, QString filePath, quint64
     this->finalizeMessageObject();
 }
 
+FileServerMessage::FileServerMessage(QString errorMsg, QList<File *> fileList, QObject *parent): ServerMessage(errorMsg, parent)
+{
+    this->addCommandCode(this->command->toCommand("GETFILEBYUSERID"));
+    this->responseBody->createGetFileByUserId(fileList);
+    this->finalizeMessageObject();
+}
+

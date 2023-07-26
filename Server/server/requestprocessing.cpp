@@ -97,6 +97,9 @@ QString RequestProcessing::handle() {
         else if(command.compare("UPLOADFILE")==0) {
             output = this->uploadFile();
         }
+        else if(command.compare("GETFILEBYUSERID")==0) {
+            output = this->getFileByUserId();
+        }
     }
     return output;
 }
@@ -226,6 +229,27 @@ QString RequestProcessing::uploadFile()
 
         FileController* fileController = new FileController();
         msg = fileController->uploadFile(fileName,filePath,userId);
+    }
+    return msg;
+}
+
+QString RequestProcessing::getFileByUserId()
+{
+    quint64 userId=NULL;
+    QString msg="can not upload file";
+
+    if (this->message.contains("info") && this->message["info"].isString())
+    {
+        QString infoString = this->message["info"].toString();
+        QJsonObject infoObject = QJsonDocument::fromJson(infoString.toUtf8()).object();
+        qDebug() <<"infoString"<<infoString;
+        if (infoObject.contains("userId")) {
+            userId = infoObject["userId"].toInt();
+        }
+
+        FileController* fileController = new FileController();
+        msg = fileController->getFileByUserId(userId);
+        this->listFile = fileController->getFileList();
     }
     return msg;
 }

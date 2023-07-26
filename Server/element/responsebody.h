@@ -25,6 +25,7 @@ public slots:
     void createSearchFileBody(QList<File*> fileList);
     void createGetAllFilesBody();
     void createUploadFileBody(QString fileName,QString filePath,quint64 userId);
+    void createGetFileByUserId(QList<File*> fileList);
 
 signals:
 

@@ -70,3 +70,18 @@ void ResponseBody::createUploadFileBody(QString fileName, QString filePath, quin
     this->responseBody.insert("userId",static_cast<qint64>(userId));
 
 }
+
+void ResponseBody::createGetFileByUserId(QList<File*> fileList)
+{
+    this->responseBody = QJsonObject();
+
+    QJsonArray fileArray;
+    for (File* file : fileList) {
+        QJsonObject fileObject;
+        fileObject["id"] = static_cast<qint64>(file->getId());
+        fileObject["file_name"] = file->getFileName();
+        fileObject["file_path"] = file->getFilePath();
+        fileArray.append(fileObject);
+    }
+    this->responseBody.insert("files", fileArray);
+}

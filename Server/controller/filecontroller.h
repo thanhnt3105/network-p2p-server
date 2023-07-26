@@ -27,6 +27,7 @@ public slots:
     QString getAllFiles();
     QString searchFileByName(QString fileName);
     QString uploadFile(QString fileName, QString filePath, quint64 userId);
+    QString getFileByUserId(quint64 userId);
 
 signals:
 

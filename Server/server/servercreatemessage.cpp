@@ -67,4 +67,17 @@ QString ServerCreateMessage::createMessage(QString msg)
         FileServerMessage*serverMsg = new FileServerMessage("");
         return serverMsg->toString();
     }
+    else if(msg.compare("cannot find your files")==0){
+        FileServerMessage*serverMsg = new FileServerMessage("cannot find your files");
+        return serverMsg->toString();
+    }
+    else if(msg.compare("found your files")==0){
+        FileServerMessage*serverMsg = new FileServerMessage("",this->requestProcessing->getListFile());
+        return serverMsg->toString();
+    }
+
+
+
+
+
 }

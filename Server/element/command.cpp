@@ -23,5 +23,6 @@ Command* Command::toCommand(QString input){
     commands.insert("UPLOADFILE", new Command("UPLOADFILE"));
     commands.insert("SEARCHFILE", new Command("SEARCHFILE"));
     commands.insert("REFRESH", new Command("REFRESH"));
+    commands.insert("GETFILEBYUSERID",new Command("GETFILEBYUSERID"));
     return commands.value(input);
 }

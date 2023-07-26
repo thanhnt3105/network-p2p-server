@@ -14,6 +14,7 @@ public:
     explicit FileServerMessage( QList<File*> fileList, QString errorMsg, QObject *parent = nullptr);
     explicit FileServerMessage(QString errorMsg, QObject *parent = nullptr);
     explicit FileServerMessage(QString fileName,QString filePath,quint64 userId,QString errorMsg, QObject *parent = nullptr);
+    explicit FileServerMessage(QString errorMsg, QList<File*> fileList,  QObject *parent = nullptr);
 
 signals:
 

@@ -67,5 +67,17 @@ QString FileController::uploadFile(QString fileName, QString filePath, quint64 u
     return "save file successfully";
 }
 
+QString FileController::getFileByUserId(quint64 userId)
+{
+    QList<File*> fileList =  this->fileQuery->getFilesByUserId(userId);
+    if(fileList.isEmpty()){
+        return "cannot find your files";
+    } else{
+        this->setFileList(fileList);
+        return "found your files";
+    }
+
+}
+
 
 
